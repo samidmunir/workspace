@@ -12,7 +12,7 @@ const recordSchema = mongoose.Schema({
         type: String,
         required: [true, 'Company name is required'],
         trim: true,
-        minLength: 5,
+        minLength: 2,
         maxLength: 50,
     },
     description: {
