@@ -28,3 +28,21 @@ export const createRecord = async (req, res) => {
         res.status(500).json({success: false, message: 'Internal server error'});
     }
 };
+
+export const updateRecord = async (req, res) => {
+    const {id} = req.params;
+
+    const record = req.body;
+
+    if (mongoose.Types.ObjectId.isValid(id) === false) {
+        return res.status(404).json({success: false, message: 'Record not found (invalid Record ID)'});
+    }
+
+    try {
+        const updatedRecord = await Record.findByIdAndUpdate(id, record, {new: true});
+        res.status(200).json({success: true, data: updatedRecord});
+    } catch (error) {
+        console.log('Error in updateRecord():', error.message);
+        res.status(500).json({success: false, message: 'Internal server error'});
+    }
+};
