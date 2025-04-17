@@ -46,3 +46,15 @@ export const updateRecord = async (req, res) => {
         res.status(500).json({success: false, message: 'Internal server error'});
     }
 };
+
+export const deleteRecord = async (req, res) => {
+    const {id} = req.params;
+
+    try {
+        await Record.findByIdAndDelete(id);
+        res.status(200).json({success: true, message: 'Record deleted successfully'});
+    } catch (error) {
+        console.log('Error in deleteRecord():', error.message);
+        res.status(404).json({success: false, message: 'Record not found'});
+    }
+};
