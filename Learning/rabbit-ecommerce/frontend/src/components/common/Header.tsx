@@ -1,10 +1,12 @@
 import Topbar from '../layout/Topbar.tsx';
+import Navbar from './Navbar.tsx';
 
 const Header = () => {
   return (
-    <div>
+    <header className='border-b border-gray-200'>
         <Topbar />
-    </div>
+        <Navbar />
+    </header>
   );
 };
 
