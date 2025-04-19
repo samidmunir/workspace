@@ -4,6 +4,6 @@ Sami Munir | sami.munir2001@gmail.com | Rutgers University Computer Science B.S
 * subscription-tracker *(Express, NodeJS)*
 ### The Ultimate React Course 2025: React, Next.js, Redux
 ## Projects
-### career-dock
+### career-dock *(MongoDB, Express, React, NodeJS)*
 ## Data Structures & Algorithms
 ## Leetcode Mastery
