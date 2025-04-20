@@ -17,7 +17,7 @@ const HomePage = () => {
                 </div>
                 {
                     records.length > 0 ? (
-                        <div className='p-4 grid grid-cols-3 gap-4'>
+                        <div className='p-4 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-4'>
                             {records.map((record) => 
                                 <RecordCard 
                                     key={record._id} 
