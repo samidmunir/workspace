@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MdHive, MdAddBox, MdPerson } from 'react-icons/md';
+import { MdHive, MdAddBox, MdPerson, MdDashboard } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -17,6 +17,7 @@ const Navbar = () => {
         <div className='hidden md:flex text-lg items-center gap-8'>
           <NavLink to='/create' className='flex items-center gap-1 text-zinc-500 font-semibold hover:text-amber-500 transition-all'>Create<MdAddBox /></NavLink>
           <NavLink to='/' className='flex items-center gap-1 text-zinc-500 font-semibold hover:text-amber-500 transition-all'>Profile<MdPerson /></NavLink>
+          <NavLink to='/dashboard' className='flex items-center gap-1 text-zinc-500 font-semibold hover:text-amber-500 transition-all'>Dashboard<MdDashboard /></NavLink>
         </div>
 
         {/* Hamburger Icon */}
@@ -35,6 +36,7 @@ const Navbar = () => {
       >
         <NavLink to='/create' onClick={() => setIsOpen(false)} className='text-lg flex items-center gap-1 text-zinc-300 hover:text-amber-500 transition-all'>Create<MdAddBox /></NavLink>
         <NavLink to='/' onClick={() => setIsOpen(false)} className='text-lg flex items-center gap-1 text-zinc-300 hover:text-amber-500 transition-all'>Profile<MdPerson /></NavLink>
+        <NavLink to='/dashboard' className='flex items-center gap-1 text-zinc-500 font-semibold hover:text-amber-500 transition-all'>Dashboard<MdDashboard /></NavLink>
       </div>
     </nav>
   );
