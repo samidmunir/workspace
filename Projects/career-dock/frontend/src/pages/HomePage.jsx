@@ -10,14 +10,14 @@ const HomePage = () => {
     }, [fetchRecords]);
 
     return (
-        <div className='w-[90%] min-h-[550px] mx-auto mt-8 mb-8 bg-zinc-950 rounded-lg shadow-lg'>
+        <div className='w-full px-4 sm:px-6 md:px-8 min-h-[550px] mx-auto mt-8 mb-8 bg-zinc-950 rounded-lg shadow-lg'>
             <div className='p-4 mx-auto'>
                 <div className='p-4'>
                     <h1 className='text-4xl text-center font-bold text-zinc-500'>Current Records</h1>
                 </div>
                 {
                     records.length > 0 ? (
-                        <div className='p-4 grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-4'>
+                        <div className='p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6'>
                             {records.map((record) => 
                                 <RecordCard 
                                     key={record._id} 
@@ -27,6 +27,7 @@ const HomePage = () => {
                                     location={record.location}
                                     type={record.type}
                                     salary={record.salary}
+                                    link={record.link}
                                     description={record.description}
                                     status={record.status}
                                     createdAt={record.createdAt}

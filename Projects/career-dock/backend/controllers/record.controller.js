@@ -14,7 +14,7 @@ export const getRecords = async (req, res) => {
 export const createRecord = async (req, res) => {
     const record = req.body;
 
-    if (!record.title || !record.company || !record.description || !record.type || !record.location || !record.salary) {
+    if (!record.title || !record.company || !record.description || !record.type || !record.location || !record.salary || !record.link) {
         return res.status(400).json({success: false, message: 'All fields are required'});
     }
 

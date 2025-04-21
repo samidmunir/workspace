@@ -39,6 +39,10 @@ const recordSchema = mongoose.Schema({
         required: [true, 'Salary is required'],
         min: 5000,
     },
+    link: {
+        type: String,
+        required: [true, 'Job Link is required'],
+    },
     status: {
         type: String,
         required: [true, 'Status is required'],

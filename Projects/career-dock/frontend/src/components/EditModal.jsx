@@ -8,6 +8,7 @@ const EditModal = (props) => {
         type: props.type,
         location: props.location,
         salary: props.salary,
+        link: props.link,
         description: props.description,
     });
 
@@ -20,82 +21,87 @@ const EditModal = (props) => {
     };
 
     return (
-        <div className='fixed inset-0 w-[75%] h-[600px] mx-auto my-auto bg-zinc-400 rounded-lg shadow-lg flex justify-center items-center'>
-            {/* <div className='p-4'>
-                <h1 className='text-4xl text-zinc-950 text-center font-bold'>Create a new record</h1>
-            </div> */}
-            <div className='w-[1000px]'>
-                <form className='w-[75%] mx-auto bg-zinc-950 rounded-lg shadow-lg p-4'>
-                    <div className='p-4 flex justify-center gap-8'>
-                        <div>
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4'>
+            <div className='w-full max-w-4xl bg-zinc-400 rounded-lg shadow-lg overflow-y-auto max-h-[90vh]'>
+                <form className='bg-zinc-950 rounded-lg shadow-lg p-4 space-y-6'>
+                    <div className='flex flex-col md:flex-row justify-center gap-6'>
+                        <div className='w-full'>
                             <label className='text-amber-500 block'>Job Title</label>
                             <input 
                                 type='text' 
                                 placeholder='Job title'
                                 value={editedRecord.title}
                                 onChange={(e) => setEditedRecord({...editedRecord, title: e.target.value})}
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 opacity-75 py-1 px-2 focus:outline-none focus:opacity-100 transition-all text-zinc-500'
+                                className='w-full placeholder:text-zinc-500 border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg'
                             />
                         </div>
-                        <div>
-                            <label className='text-amber-500 block'>Job company</label>
+                        <div className='w-full'>
+                            <label className='text-amber-500 block'>Job Company</label>
                             <input 
                                 type='text' 
                                 placeholder='Job company'
                                 value={editedRecord.company}
                                 onChange={(e) => setEditedRecord({...editedRecord, company: e.target.value})}
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 opacity-75 py-1 px-2 focus:outline-none focus:opacity-100 transition-all text-zinc-500' 
+                                className='w-full placeholder:text-zinc-500 border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
                             />
                         </div>
                     </div>
-                    <div className='p-4 flex justify-center gap-8'>
-                        <div>
-                            <label className='text-amber-500 block'>Job type</label>
+                    <div className='flex flex-col lg:flex-row justify-center gap-6'>
+                        <div className='w-full'>
+                            <label className='text-amber-500 block'>Job Type</label>
                             <input
-                                value={editedRecord.type}
-                                onChange={(e) => setEditedRecord({...editedRecord, type: e.target.value})}
                                 type='text' 
                                 placeholder='Job type'
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 opacity-75 py-1 px-2 focus:outline-none focus:opacity-100 transition-all text-zinc-500' 
+                                value={editedRecord.type}
+                                onChange={(e) => setEditedRecord({...editedRecord, type: e.target.value})}
+                                className='w-full placeholder:text-zinc-500 border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
                             />
                         </div>
-                        <div>
-                            <label className='text-amber-500 block'>Job location</label>
+                        <div className='w-full'>
+                            <label className='text-amber-500 block'>Job Location</label>
                             <input 
                                 type='text' 
                                 placeholder='Job location'
                                 value={editedRecord.location}
                                 onChange={(e) => setEditedRecord({...editedRecord, location: e.target.value})}
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 opacity-75 py-1 px-2 focus:outline-none focus:opacity-100 transition-all text-zinc-500' 
+                                className='w-full placeholder:text-zinc-500 border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
                             />
                         </div>
-                        <div>
-                            <label className='text-amber-500 block'>Job salary</label>
+                        <div className='w-full'>
+                            <label className='text-amber-500 block'>Job Salary</label>
                             <input 
                                 type='number' 
                                 placeholder='$00000/yr'
                                 value={editedRecord.salary}
                                 onChange={(e) => setEditedRecord({...editedRecord, salary: e.target.value})}
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 opacity-75 py-1 px-2 focus:outline-none focus:opacity-100 transition-all text-zinc-500' 
+                                className='w-full placeholder:text-zinc-500 border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
                             />
                         </div>
                     </div>
-                    <div className='p-4'>
-                        <div className='mx-auto w-[500px]'>
-                            <label className='text-amber-500 block'>Job description</label>
-                            <input 
-                                type='text' 
-                                placeholder='Job description'
-                                maxLength={5000}
-                                value={editedRecord.description}
-                                onChange={(e) => setEditedRecord({...editedRecord, description: e.target.value})}
-                                className='placeholder:text-zinc-500 border-2 border-amber-500 w-[500px] h-[200px] py-1 px-2 placeholder:text-center opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500' 
-                            />
-                        </div>
+                    <div className='w-full'>
+                        <label className='text-amber-500 block'>Job Link</label>
+                        <input 
+                            type='text'
+                            placeholder='Job link'
+                            maxLength={250}
+                            value={editedRecord.link}
+                            onChange={(e) => setEditedRecord({...editedRecord, link: e.target.value})}
+                            className='w-full resize-none placeholder:text-zinc-500 placeholder:text-center border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
+                        />
                     </div>
-                    <div className='p-4 flex justify-between'>
-                        <button onClick={props.handleClose} className='border-2 border-rose-500 text-rose-500 text-center mx-auto py-1 px-2 font-bold text-lg rounded-lg hover:bg-rose-500 hover:text-zinc-950 hover:scale-110 transition-all'>Close</button>
-                        <button onClick={handleSaveEdit} className='border-2 border-emerald-500 text-emerald-500 text-center mx-auto py-1 px-2 font-bold text-lg rounded-lg hover:bg-emerald-500 hover:text-zinc-950 hover:scale-110 transition-all'>Update</button>
+                    <div className='w-full'>
+                        <label className='text-amber-500 block'>Job Description</label>
+                        <textarea 
+                            placeholder='Job description'
+                            maxLength={5000}
+                            value={editedRecord.description}
+                            onChange={(e) => setEditedRecord({...editedRecord, description: e.target.value})}
+                            className='w-full h-40 resize-none placeholder:text-zinc-500 placeholder:text-center border-2 border-amber-500 py-2 px-3 opacity-75 focus:outline-none focus:opacity-100 transition-all text-zinc-500 rounded-lg' 
+                        />
+                    </div>
+                    <div className='flex flex-col sm:flex-row justify-between gap-4'>
+                        <button onClick={props.handleClose} type='button' className='border-2 border-rose-500 text-rose-500 py-2 px-4 font-bold text-lg rounded-lg hover:bg-rose-500 hover:text-zinc-950 hover:scale-110 transition-all'>Close</button>
+                        <button onClick={handleSaveEdit} type='button' className='border-2 border-emerald-500 text-emerald-500 py-2 px-4 font-bold text-lg rounded-lg hover:bg-emerald-500 hover:text-zinc-950 hover:scale-110 transition-all'>Update</button>
                     </div>
                 </form>
             </div>
