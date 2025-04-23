@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useRecordData } from '../data/record.js';
 import RecordCard from '../components/RecordCard.jsx';
+import LoadingSpinner from '../components/ui/LoadingSpinner.jsx';
 
 const HomePage = () => {
-    const {fetchRecords, records} = useRecordData();
+    const {fetchRecords, records, loading} = useRecordData();
 
     useEffect(() => {
         fetchRecords();
     }, [fetchRecords]);
+
+    if (loading) return <LoadingSpinner label='Fetching your job records...' />;
 
     return (
         <div className='w-full px-4 sm:px-6 md:px-8 min-h-[550px] mx-auto mt-8 mb-8 bg-zinc-950 rounded-lg shadow-lg'>
@@ -32,6 +35,7 @@ const HomePage = () => {
                                     status={record.status}
                                     createdAt={record.createdAt}
                                     updatedAt={record.updatedAt}
+                                    onDeleteSuccess={fetchRecords}
                                 />
                             )}
                         </div>

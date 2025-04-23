@@ -26,18 +26,39 @@
 //     },
 // }));
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 export const useRecordData = () => {
     const [records, setRecords] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    const fetchRecords = async () => {
-        const response = await fetch('/api/records');
-        const data = await response.json();
-        if (data.success) {
-            setRecords(data.data);
+    // const fetchRecords = async () => {
+    //     setLoading(true);
+    //     try {
+    //         const response = await fetch('/api/records');
+    //         const data = await response.json();
+    //         if (data.success) {
+    //             setRecords(data.data);
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    //     setLoading(false);
+    // };
+
+    const fetchRecords = useCallback(async () => {
+        setLoading(true);
+        try {
+            const response = await fetch('/api/records');
+            const data = await response.json();
+            if (data.success) {
+                setRecords(data.data);
+            }
+        } catch (error) {
+            console.error(error);
         }
-    };
+        setLoading(false);
+    }, []);
 
     const createRecord = async (record) => {
         const response = await fetch('/api/records', {
@@ -55,9 +76,26 @@ export const useRecordData = () => {
             method: 'DELETE',
         });
         const data = await response.json();
-        if (data.success) fetchRecords(); // Refresh list after deletion
+        if (data.success) await fetchRecords(); // Refresh list after deletion
         return data;
     };
+
+    // const deleteRecord = useCallback(async (id) => {
+    //     setLoading(true);
+    //     try {
+    //         const response = await fetch(`/api/records/${id}`, {
+    //             method: 'DELETE',
+    //         });
+    //         const data = await response.json();
+    //         if (data.success) {
+    //             await fetchRecords();
+    //         }
+    //         return data;
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    //     setLoading(false);
+    // }, [fetchRecords]);
 
     const updateRecord = async (id, updatedData) => {
         const response = await fetch(`/api/records/${id}`, {
@@ -72,5 +110,5 @@ export const useRecordData = () => {
         }
     };
 
-    return { fetchRecords, createRecord, deleteRecord, updateRecord, records };
+    return { fetchRecords, createRecord, deleteRecord, updateRecord, records, loading };
 };

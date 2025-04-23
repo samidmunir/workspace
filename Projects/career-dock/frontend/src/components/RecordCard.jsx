@@ -91,8 +91,12 @@ import EditModal from './EditModal.jsx';
 import DeleteConfirmModal from './ConfirmDelete.jsx';
 import { useRecordData } from '../data/record.js';
 import { AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const RecordCard = (props) => {
+
+    const navigate = useNavigate();
+
     const [showEditModal, setShowEditModal] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
 
@@ -105,7 +109,11 @@ const RecordCard = (props) => {
 
     const confirmDelete = async () => {
         const { success, message } = await deleteRecord(props.id);
-        if (!success) console.log(`Error deleting record: ${message}`);
+        if (!success) {
+            console.log(`Error deleting record: ${message}`);
+        } else {
+            props.onDeleteSuccess?.();
+        }
         setShowConfirm(false);
     };
 
@@ -134,7 +142,7 @@ const RecordCard = (props) => {
                     <p className='text-left truncate'><span className='font-semibold'>Notes:</span> {trimRecordDescription(props.description)}</p>
                 </div>
                 <div className='bg-zinc-950 p-4 flex flex-wrap justify-evenly gap-2 opacity-75 hover:opacity-100 transition-all'>
-                    <button className='border border-emerald-500 text-emerald-500 flex items-center gap-1 font-bold py-1 px-2 rounded-lg hover:bg-emerald-500 hover:text-zinc-950 transition-all'>View <MdMoreHoriz /></button>
+                    <button onClick={() => navigate(`/record/${props.id}`)} className='border border-emerald-500 text-emerald-500 flex items-center gap-1 font-bold py-1 px-2 rounded-lg hover:bg-emerald-500 hover:text-zinc-950 transition-all'>View <MdMoreHoriz /></button>
                     <button onClick={handleEdit} className='border border-amber-500 text-amber-500 flex items-center gap-1 font-bold py-1 px-2 rounded-lg hover:bg-amber-500 hover:text-zinc-950 transition-all'>Edit <MdEditSquare /></button>
                     <button onClick={() => setShowConfirm(true)} className='border border-rose-500 text-rose-500 flex items-center gap-1 font-bold py-1 px-2 rounded-lg hover:bg-rose-500 hover:text-zinc-950 transition-all'>Delete<MdDeleteForever /></button>
                 </div>
