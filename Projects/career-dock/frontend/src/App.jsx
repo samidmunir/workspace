@@ -4,11 +4,13 @@ import HomePage from './pages/HomePage.jsx';
 import CreatePage from './pages/CreatePage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
 import JobDetail from './pages/JobDetail.jsx';
+import { Toaster } from 'sonner';
 
 function App() {
   return (
     <>
       <Navbar />
+      <Toaster position='top-right' />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/create' element={<CreatePage />} />

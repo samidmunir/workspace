@@ -1,6 +1,7 @@
 import { useRecordData } from '../data/record.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const CreatePage = () => {
     const [newRecord, setNewRecord] = useState({
@@ -19,6 +20,9 @@ const CreatePage = () => {
 
     const handleCreateRecord = async () => {
         await createRecord(newRecord);
+        toast.success('New record created.', {
+            duration: 1500,
+        });
         setNewRecord({
             title: '',
             company: '',
