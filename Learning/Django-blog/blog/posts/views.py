@@ -34,3 +34,13 @@ def home(request: HttpRequest):
         '''
 
     return HttpResponse(HTML)
+
+def post(request: HttpRequest, id: str):
+    HTML = ''
+    HTML += f'''
+        <div>
+            <h1>{id}</h1>
+        </div>
+    '''
+
+    return HttpResponse(HTML)
