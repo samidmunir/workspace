@@ -30,16 +30,22 @@ def home(request: HttpRequest):
             <div>
                 <h1>{post['id']} - {post['title']}</h1>
                 <p>{post['content']}</p>
+                <a href='/post/{post['id']}'>View</a>
             </div>
         '''
 
     return HttpResponse(HTML)
 
 def post(request: HttpRequest, id: str):
-    HTML = ''
-    HTML += f'''
+    post_dict = None
+    for post in posts:
+        if post['id'] == id:
+            post_dict = post
+            break
+    HTML = f'''
         <div>
-            <h1>{id}</h1>
+            <h1>{post_dict['title']}</h1>
+            <p>{post_dict['content']}</p>
         </div>
     '''
 
