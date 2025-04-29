@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRecordData } from '../data/record.js';
 
 const EditModal = (props) => {
+
     const [editedRecord, setEditedRecord] = useState({
         title: props.title,
         company: props.company,
