@@ -5,6 +5,7 @@ Sami Munir | sami.munir2001@gmail.com | Rutgers University Computer Science B.S
 * rabbit-ecommerce *(MERN stack)*
 * Django-blog *(Python, Django, Postgres)*
 * Django-notes *(Python, Django, Postgres)*
+* mern-auth *(MERN stack)*
 ### The Ultimate React Course 2025: React, Next.js, Redux
 ## Projects
 * career-dock *(MongoDB, Express, React, NodeJS)*
